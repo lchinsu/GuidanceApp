@@ -1,0 +1,55 @@
+<div class="container">
+    <h1>Register</h1>
+    <form (ngSubmit)="onSubmit()" #RegisterForm="ngForm" class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput id="Email" [(ngModel)]="form.Email" type="email"
+                    name="email" #email="ngModel" required placeholder="Ex. abc@gmail.com">
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput id="Password" [(ngModel)]="form.Password"  type="password"
+                    name="password" #password="ngModel" required 
+                    placeholder="Password must have at least one digit ('0'-'9') and one non letter or digit character.">
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput id="ConfirmedPassword" [(ngModel)]="form.ConfirmedPassword" type="password"
+                    name="confirmedpassword" #confirmedpassword="ngModel" required 
+                    placeholder="Must match with password entered above.">
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <mat-divider></mat-divider>
+      <section>
+        <div class="example-button-row">
+          <button mat-raised-button color="Accent" [routerLink]="'/Login'" >Login</button>
+          <button mat-raised-button color="primary"[disabled]="!RegisterForm.form.valid" >Register</button>
+        </div>
+      </section>
+
+      <!-- <button type="submit" class="btn btn-success" [disabled]="!patientForm.form.valid">Submit</button> -->
+      <!-- <button type="button" class="btn btn-default" (click)="newpatient(); patientForm.reset()">New patient</button> -->
+    </form>
+</div>
+
+

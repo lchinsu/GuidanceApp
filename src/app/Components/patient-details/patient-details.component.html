@@ -1,0 +1,142 @@
+<div class="container" *ngIf="patient">
+    <h1>Patient Form</h1>
+    <form (ngSubmit)="onSubmit()" #patientForm="ngForm" class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Patient Name</mat-label>
+              <input matInput id="PatientName" [(ngModel)]="patient.PatientName" 
+                    name="name" #name="ngModel" required placeholder="Enter Full Name">
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Gender</mat-label>
+              <mat-select [(value)]="patient.GenderName" id="gender" name="gender"
+                          [(ngModel)]="patient.GenderId" #gender="ngModel" required>
+                <mat-option *ngFor="let gend of genderList" 
+                            [value]="gend.GenderId">{{gend.GenderName}}</mat-option>
+              </mat-select>
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Date Of Birth</mat-label>
+              <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" 
+                      id="DOB" [(ngModel)]="patient.DateOfBirth" placeholder="mm/dd/yyyy" 
+                      name="dob" #dob="ngModel" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>City</mat-label>
+              <input matInput id="City" [(ngModel)]="patient.City" 
+                    name="city" #city="ngModel" placeholder="Ex. Melbourne">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Post Code</mat-label>
+              <input matInput id="PostCode" [(ngModel)]="patient.PostalCode" 
+                    name="postcode" #postcode="ngModel" placeholder="Ex. 3000">
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Bed</mat-label>
+              <input matInput id="Bed" [(ngModel)]="patient.Bed" 
+                    name="bed" #bed="ngModel" placeholder="Enter Bed Number">
+            </mat-form-field>
+          </td>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Ward</mat-label>
+              <mat-select [(value)]="patient.WardName" id="Ward" name="ward"
+                          [(ngModel)]="patient.WardId" #ward="ngModel" placeholder="Select Ward">
+                <mat-option *ngFor="let ward of wardList" 
+                            [value]="ward.WardId">{{ward.WardName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Unit</mat-label>
+              <mat-select [(value)]="patient.HospitalDeptUnitName" id="Unit" name="unit"
+                          [(ngModel)]="patient.HospitalDeptUnitId" #unit="ngModel">
+                <mat-option *ngFor="let unit of hospitaldeptunitList" 
+                            [value]="unit.HospitalDeptUnitId">{{unit.HospitalDeptUnitName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Treating Doctor</mat-label>
+              <mat-select [(value)]="patient.DoctorName" id="Doctor" name="doctor"
+                          [(ngModel)]="patient.DoctorId" #doctor="ngModel" required>
+                <mat-option *ngFor="let doctor of doctorList" 
+                            [value]="doctor.DoctorId">{{doctor.DoctorName}}</mat-option>
+              </mat-select>
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Admission Date</mat-label>
+              <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="adpicker" 
+                      id="AdmissionDate" [(ngModel)]="patient.AdmissionDate" placeholder="mm/dd/yyyy" 
+                      name="admissiondate" #admissiondate="ngModel" required>
+              <mat-datepicker-toggle matSuffix [for]="adpicker"></mat-datepicker-toggle>
+              <mat-datepicker #adpicker></mat-datepicker>
+            </mat-form-field>
+          </td>
+          <td style="width:50%">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Discharged Date</mat-label>
+              <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="ddpicker" 
+                      id="DischargedDate" [(ngModel)]="patient.DischargedDate" placeholder="mm/dd/yyyy" 
+                      name="dischargeddate" #dischargeddate="ngModel" >
+              <mat-datepicker-toggle matSuffix [for]="ddpicker"></mat-datepicker-toggle>
+              <mat-datepicker #ddpicker></mat-datepicker>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <mat-divider></mat-divider>
+      <section>
+        <div class="example-button-row">
+          <button mat-raised-button (click)="RedirectToPatientList()">Back</button>
+          <button mat-raised-button color="warn" (click)="Delete()">Delete Patient</button>
+          <button mat-raised-button color="primary"[disabled]="!patientForm.form.valid" >Save Patient</button>
+        </div>
+      </section>
+
+      <!-- <button type="submit" class="btn btn-success" [disabled]="!patientForm.form.valid">Submit</button> -->
+      <!-- <button type="button" class="btn btn-default" (click)="newpatient(); patientForm.reset()">New patient</button> -->
+    </form>
+</div>
+

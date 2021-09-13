@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Login</h1>
+    <form (ngSubmit)="onSubmit()" #LoginForm="ngForm" class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput id="Username" [(ngModel)]="form.username" type="email"
+                    name="username" #username="ngModel" required placeholder="Ex. abc@gmail.com">
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput id="Password" [(ngModel)]="form.password"  type="password"
+                    name="password" #password="ngModel" required 
+                    placeholder="Enter Your Password.">
+              <mat-error>Required</mat-error>
+            </mat-form-field>
+          </td>        
+        </tr>
+      </table>      
+      <mat-divider></mat-divider>
+      <section>
+        <div class="example-button-row">
+          <button mat-raised-button [routerLink]="'/Register'" color="accent">Register</button>
+          <span class="example-spacer"></span>
+          <button mat-raised-button color="primary"[disabled]="!LoginForm.form.valid" >Login</button>
+        </div>
+      </section>
+
+      <!-- <button type="submit" class="btn btn-success" [disabled]="!patientForm.form.valid">Submit</button> -->
+      <!-- <button type="button" class="btn btn-default" (click)="newpatient(); patientForm.reset()">New patient</button> -->
+    </form>
+</div>
+
+
