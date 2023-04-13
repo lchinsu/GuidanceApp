@@ -10,6 +10,7 @@ export class ErrorMessageService {
   messages: string[] = [];
 
   add(message: string) {
+    this.clear();
     this.messages.push(message);
   }
 

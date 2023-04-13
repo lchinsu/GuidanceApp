@@ -7,13 +7,17 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Patient Name</mat-label>
               <input matInput id="PatientName" [(ngModel)]="patient.PatientName" 
-                    name="name" #name="ngModel" required placeholder="Enter Full Name">
+                    name="name" #name="ngModel" required placeholder="Ex. John Doe">
+                    <button *ngIf="patient.PatientName" matSuffix mat-icon-button aria-label="Clear" (click)="patient.PatientName=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+              <mat-hint>Enter Full Name</mat-hint>
               <mat-error>Required</mat-error>
             </mat-form-field>
           </td>        
         </tr>
       </table>
-      <table class="example-full-width" cellspacing="0">
+      <table class="example-full-width padding-top" cellspacing="0">
         <tr>
           <td style="width:50%">
             <mat-form-field class="example-full-width" appearance="fill">
@@ -34,6 +38,8 @@
                       name="dob" #dob="ngModel" required>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-hint>Required</mat-hint>
+              <mat-error>Required</mat-error>
             </mat-form-field>
           </td>        
         </tr>
@@ -45,13 +51,17 @@
               <mat-label>City</mat-label>
               <input matInput id="City" [(ngModel)]="patient.City" 
                     name="city" #city="ngModel" placeholder="Ex. Melbourne">
+                    <button *ngIf="patient.City" matSuffix mat-icon-button aria-label="Clear" 
+                            (click)="patient.City=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Post Code</mat-label>
               <input matInput id="PostCode" [(ngModel)]="patient.PostalCode" 
-                    name="postcode" #postcode="ngModel" placeholder="Ex. 3000">
+                    name="postcode" #postcode="ngModel" placeholder="Ex. 3000" >
             </mat-form-field>
           </td>        
         </tr>
@@ -63,6 +73,10 @@
               <mat-label>Bed</mat-label>
               <input matInput id="Bed" [(ngModel)]="patient.Bed" 
                     name="bed" #bed="ngModel" placeholder="Enter Bed Number">
+                    <button *ngIf="patient.Bed" matSuffix mat-icon-button aria-label="Clear" 
+                            (click)="patient.Bed=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
             </mat-form-field>
           </td>
           <td style="width:50%">
@@ -112,6 +126,7 @@
                       name="admissiondate" #admissiondate="ngModel" required>
               <mat-datepicker-toggle matSuffix [for]="adpicker"></mat-datepicker-toggle>
               <mat-datepicker #adpicker></mat-datepicker>
+              <mat-error>Required</mat-error>
             </mat-form-field>
           </td>
           <td style="width:50%">

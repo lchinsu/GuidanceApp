@@ -1,8 +1,8 @@
 <div *ngIf="errorMessageService.messages.length">
-
-    <h2>Messages</h2>
+    <!-- <h2>Messages</h2>
     <button class="clear"
-            (click)="errorMessageService.clear()">Clear messages</button>
-    <div *ngFor='let message of errorMessageService.messages'> {{message}} </div>
-  
-  </div>
+            (click)="errorMessageService.clear()">Clear messages</button> -->
+    <div *ngFor='let message of errorMessageService.messages' class="errormessage">
+             <h4 class="md-body-2 warn">{{message}} </h4>
+        </div>
+</div>

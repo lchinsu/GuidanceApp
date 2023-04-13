@@ -1,4 +1,4 @@
-<div class="container">
+<div>
     <h1>Login</h1>
     <form (ngSubmit)="onSubmit()" #LoginForm="ngForm" class="example-form">
       <table class="example-full-width" cellspacing="0">
@@ -19,14 +19,15 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Password</mat-label>
               <input matInput id="Password" [(ngModel)]="form.password"  type="password"
-                    name="password" #password="ngModel" required 
+                    name="password" #password="ngModel" required
                     placeholder="Enter Your Password.">
               <mat-error>Required</mat-error>
             </mat-form-field>
           </td>        
         </tr>
-      </table>      
-      <mat-divider></mat-divider>
+      </table>   
+      <app-error-message></app-error-message>  
+      <mat-divider></mat-divider>    
       <section>
         <div class="example-button-row">
           <button mat-raised-button [routerLink]="'/Register'" color="accent">Register</button>

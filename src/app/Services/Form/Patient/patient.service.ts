@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 
 import { Router } from '@angular/router';
 
+import { ErrorHandlerService } from '../../ErroHandler/error-handler.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +20,8 @@ export class PatientService {
   constructor(
     private http: HttpClient,
     private errorMessageService : ErrorMessageService,
-    private router : Router
+    private router : Router,
+    private errorHandler : ErrorHandlerService
     ) { }
 
   // private patientUrl = 'https://localhost:44379/api/Patient';
@@ -62,9 +65,12 @@ export class PatientService {
   updatePatient(Patient: Patient): Observable<any> {
     return this.http.post<Patient>(this.patientUrl, Patient, this.httpOptions).pipe(
       tap(_ => this.log(`updated Patient id=${Patient.PatientID}`)),
-      catchError(this.handleError<any>('updatePatient'))
+      catchError(this.errorHandler.handleError<any>('updatePatient'))
+      // catchError(this.handleError<any>('updatePatient'))
     );
   }
+
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

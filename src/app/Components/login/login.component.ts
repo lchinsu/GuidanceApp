@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/Services/Authentication/auth-service.service';
 
 import { TokenStorageService } from 'src/app/Services/Token/token-storage.service';
+import { ErrorHandlerService } from 'src/app/Services/ErroHandler/error-handler.service';
 
 import { Router } from '@angular/router';
 
@@ -24,7 +25,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService : AuthServiceService, 
     private router:Router,
-    private tokenStorage : TokenStorageService) { }
+    private tokenStorage : TokenStorageService,
+    private errorHandler : ErrorHandlerService
+  ) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
